@@ -9,9 +9,20 @@ public class MQProducer {
 
     public static void main(String[] args) {
 
+        try {
+            produceMsg("rabbitmq.first","第一条消息");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (TimeoutException e) {
+            e.printStackTrace();
+        }
+        finally {
+
+        }
+
     }
 
-    public void produceMsg(String queue,String msg) throws IOException, TimeoutException {
+    public static void produceMsg(String queue,String msg) throws IOException, TimeoutException {
         //创建连接工厂
         ConnectionFactory connectionFactory = new ConnectionFactory();
         //设置连接地址
@@ -32,7 +43,6 @@ public class MQProducer {
         channel.queueDeclare(queue,true,false,false,null);
         //创建生产者
         channel.basicPublish("",queue,null,msg.getBytes());
-
         //关闭连接
         channel.close();
         connection.close();

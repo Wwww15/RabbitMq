@@ -12,7 +12,6 @@ import java.util.concurrent.TimeoutException;
 public class MQConsumer {
 
     public static void main(String[] args) {
-
         try {
             consumeMsg("rabbitmq.first");
         } catch (IOException e) {
@@ -20,7 +19,6 @@ public class MQConsumer {
         } catch (TimeoutException e) {
             e.printStackTrace();
         }
-
     }
     /**
      * 消费消息构建
