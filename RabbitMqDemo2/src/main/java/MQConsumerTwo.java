@@ -2,16 +2,14 @@ import com.rabbitmq.client.BuiltinExchangeType;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
-import org.apache.commons.lang3.ObjectUtils;
-import org.apache.commons.lang3.StringUtils;
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
 
 /**
- * 消费者1
+ * 消费者2
  */
-public class MQConsumerOne {
+public class MQConsumerTwo {
 
     public static void main(String[] args) {
         try {
@@ -46,8 +44,6 @@ public class MQConsumerOne {
         channel.exchangeDeclare("work.exchange", BuiltinExchangeType.DIRECT,false,true,null);
         //声明队列
         channel.queueDeclare(queue,false,false,false,null);
-        //绑定队列
-        channel.queueBind(queue,"work.exchange","queue");
         //创建消费者
         channel.basicConsume(queue,true,(consumerTag,message)->{
             //打印消息
@@ -62,7 +58,8 @@ public class MQConsumerOne {
             System.out.println(consumerTag);
         });
         //关闭连接
-       /* channel.close();
-        connection.close();*/
+        /* channel.close();
+           connection.close();
+        */
     }
 }
