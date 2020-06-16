@@ -8,18 +8,22 @@ import java.util.concurrent.TimeoutException;
 
 /**
  * 生产者
+ *
+ * @Tag 工厂队列
  */
 
 public class MQProducer {
 
     public static void main(String[] args) {
 
-
+        for (int count=0;count<10;count++)
+        {
             try {
-                produceMsg("work.queue","来啦，老弟");
+                produceMsg("work.queue","来啦，老弟!我是你老姐"+count);
             } catch (Exception e) {
                 e.printStackTrace();
             }
+        }
     }
 
     public static  void produceMsg(String queue,String msg) throws IOException, TimeoutException {
@@ -33,8 +37,6 @@ public class MQProducer {
         Channel channel = connection.createChannel();
         //声明交换机
         channel.exchangeDeclare("work.exchange", BuiltinExchangeType.DIRECT,false,true,null);
-        //声明队列
-        channel.queueDeclare(queue,false,false,false,null);
         //创建生产者
         channel.basicPublish("work.exchange","queue",null, msg.getBytes());
         //关闭连接

@@ -8,6 +8,8 @@ import java.util.concurrent.TimeoutException;
 
 /**
  * 消费者
+ *
+ * @Tag 初次使用
  */
 public class MQConsumer {
 

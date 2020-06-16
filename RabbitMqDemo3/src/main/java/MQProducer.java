@@ -5,46 +5,26 @@ import com.rabbitmq.client.ConnectionFactory;
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
 
-/**
- *  @Tag 初次使用
- */
 public class MQProducer {
 
     public static void main(String[] args) {
-
         try {
-            produceMsg("rabbitmq.first","第一条消息");
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (TimeoutException e) {
+            produceMsg("ack.durable","看你是不是能确认哇！");
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        finally {
-
-        }
-
     }
 
     public static void produceMsg(String queue,String msg) throws IOException, TimeoutException {
-        //创建连接工厂
+        //获取连接工厂
         ConnectionFactory connectionFactory = new ConnectionFactory();
-        //设置连接地址
+        //设置连接地址(其他信息默认)
         connectionFactory.setHost("192.168.239.128");
-        //设置连接端口(默认配置)
-        connectionFactory.setPort(5672);
-        //设置连接用户(默认配置)
-        connectionFactory.setUsername("guest");
-        //设置连接密码(默认配置)
-        connectionFactory.setPassword("guest");
-        //设置连接虚拟机(默认配置)
-        connectionFactory.setVirtualHost("/");
-        //创建连接
+        //获取连接
         Connection connection = connectionFactory.newConnection();
         //创建通道
         Channel channel = connection.createChannel();
-        //声明队列(如果队列不存在，会创建)
-        channel.queueDeclare(queue,true,false,false,null);
-        //创建生产者
+        //创建消费者
         channel.basicPublish("",queue,null,msg.getBytes());
         //关闭连接
         channel.close();

@@ -10,6 +10,8 @@ import java.util.concurrent.TimeoutException;
 
 /**
  * 消费者1
+ *
+ * @Tag 工厂队列
  */
 public class MQConsumerOne {
 
