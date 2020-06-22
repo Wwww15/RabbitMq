@@ -48,8 +48,8 @@ public class MQConsumerOne {
         channel.exchangeDeclare("work.exchange", BuiltinExchangeType.DIRECT,false,true,null);
         //声明队列
         channel.queueDeclare(queue,false,false,false,null);
-        //绑定队列
-        channel.queueBind(queue,"work.exchange","queue");
+        //设置队列中未消费的消息
+        channel.basicQos(1);
         //创建消费者
         channel.basicConsume(queue,true,(consumerTag,message)->{
             //打印消息

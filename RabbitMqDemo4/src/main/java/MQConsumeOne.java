@@ -6,11 +6,11 @@ import java.io.IOException;
 import java.util.concurrent.TimeoutException;
 
 /**
- * 消费者
+ * 消费者1
  *
- * @Tag 消息确认和持久性
+ * @Tag 公平派遣模拟
  */
-public class MQConsumer {
+public class MQConsumeOne {
 
     public static void main(String[] args) {
 
@@ -32,8 +32,16 @@ public class MQConsumer {
         Channel channel = connection.createChannel();
         //声明队列(第一次创建持久队列的时候声明，临时队列每次声明)
         channel.queueDeclare(queue,true,false,false,null);
+        //设置消费者中最大的未确认消息数
+        channel.basicQos(1);
         //创建消费者
         channel.basicConsume(queue,false,( consumerTag, message)->{
+            //模拟处理耗时很长得消息
+            try {
+                Thread.sleep((long) (Math.random()*20000+1000));
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             System.out.println(new String(message.getBody(),"UTF-8"));
             //添加手动确认
             channel.basicAck(message.getEnvelope().getDeliveryTag(),false);

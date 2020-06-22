@@ -12,6 +12,7 @@
         <module>RabbitMqDemo1</module>
         <module>RabbitMqDemo2</module>
         <module>RabbitMqDemo3</module>
+        <module>RabbitMqDemo4</module>
     </modules>
 
     <dependencies>

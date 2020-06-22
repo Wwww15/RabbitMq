@@ -50,7 +50,7 @@ public class MQConsumerTwo {
         channel.basicConsume(queue,true,(consumerTag,message)->{
             //打印消息
             try {
-                Thread.sleep(Math.round(Math.random()*2000)+1000);
+                Thread.sleep(Math.round(Math.random()*20000)+1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

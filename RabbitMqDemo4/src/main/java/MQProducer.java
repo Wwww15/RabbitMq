@@ -15,11 +15,16 @@ import java.util.concurrent.TimeoutException;
 public class MQProducer {
 
     public static void main(String[] args) {
-        try {
-            produceMsg("ack.durable","看你是不是能确认哇！");
-        } catch (Exception e) {
-            e.printStackTrace();
+
+        for (int n=1;n<11;n++)
+        {
+            try {
+                produceMsg("ack.durable","看你是不是能确认哇！第"+n+"次确认！");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
+
     }
 
     public static void produceMsg(String queue,String msg) throws IOException, TimeoutException {
