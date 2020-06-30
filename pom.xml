@@ -13,6 +13,7 @@
         <module>RabbitMqDemo2</module>
         <module>RabbitMqDemo3</module>
         <module>RabbitMqDemo4</module>
+        <module>RabbitMqDemo5</module>
     </modules>
 
     <dependencies>
