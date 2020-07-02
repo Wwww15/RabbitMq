@@ -30,7 +30,7 @@ public class MQProducer {
         //创建连接工厂
         ConnectionFactory connectionFactory = new ConnectionFactory();
         //设置代理地址
-        connectionFactory.setHost("192.168.239.128");
+        connectionFactory.setHost("10.0.10.3");
         //创建连接
         Connection connection = connectionFactory.newConnection();
         //创建通道
@@ -38,7 +38,7 @@ public class MQProducer {
         //声明交换机
         channel.exchangeDeclare("work.exchange", BuiltinExchangeType.DIRECT,false,true,null);
         //创建生产者
-        channel.basicPublish("work.exchange","queue",null, msg.getBytes());
+        channel.basicPublish("work.exchange","",null, msg.getBytes());
         //关闭连接
         channel.close();
         connection.close();

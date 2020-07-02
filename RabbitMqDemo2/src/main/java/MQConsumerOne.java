@@ -31,7 +31,7 @@ public class MQConsumerOne {
         //创建连接工厂
         ConnectionFactory connectionFactory = new ConnectionFactory();
         //设置代理地址
-        connectionFactory.setHost("192.168.239.128");
+        connectionFactory.setHost("10.0.10.3");
         //设置连接端口(默认配置)
         connectionFactory.setPort(5672);
         //设置连接用户(默认配置)
@@ -47,9 +47,9 @@ public class MQConsumerOne {
         //声明交换机
         channel.exchangeDeclare("work.exchange", BuiltinExchangeType.DIRECT,false,true,null);
         //声明队列
-        channel.queueDeclare(queue,false,false,false,null);
-        //设置队列中未消费的消息
-        channel.basicQos(1);
+        channel.queueDeclare(queue,false,false,true,null);
+        //绑定队列
+        channel.queueBind(queue,"work.exchange","");
         //创建消费者
         channel.basicConsume(queue,true,(consumerTag,message)->{
             //打印消息

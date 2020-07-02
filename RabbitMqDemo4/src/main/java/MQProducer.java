@@ -10,7 +10,7 @@ import java.util.concurrent.TimeoutException;
 /**
  * 生产者
  *
- * @Tag 消息确认和持久性
+ * @Tag 公平派遣模拟
  */
 public class MQProducer {
 
