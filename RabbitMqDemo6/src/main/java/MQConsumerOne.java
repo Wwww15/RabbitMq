@@ -25,7 +25,11 @@ public class MQConsumerOne {
         //创建工厂连接
         ConnectionFactory connectionFactory = new ConnectionFactory();
         //设置连接地址
+<<<<<<< HEAD
         connectionFactory.setHost("192.168.239.128");
+=======
+        connectionFactory.setHost("10.0.10.3");
+>>>>>>> c5ca5f4a36c7b247d4dfd9ae0ca1b342bef86eb4
         //创建连接
         Connection connection = connectionFactory.newConnection();
         //创建通道
@@ -36,10 +40,13 @@ public class MQConsumerOne {
         channel.queueDeclare(queue,false,false,true,null);
         //绑定队列
         channel.queueBind(queue,exchange,routeKey,null);
+<<<<<<< HEAD
         //声明一个临时的排他的队列
         String queueName = channel.queueDeclare().getQueue();
         //绑定队列
         channel.queueBind(queueName,exchange,routeKey);
+=======
+>>>>>>> c5ca5f4a36c7b247d4dfd9ae0ca1b342bef86eb4
         //创建消费者，消费消息
         channel.basicConsume(queue, true, (consumerTag, message) -> {
             //消费消息
