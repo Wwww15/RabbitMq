@@ -9,13 +9,13 @@ import java.util.concurrent.TimeoutException;
 /**
  * 消费者2
  *
- * @Tag 直接交换 Direct exchange
+ * @Tag 扇出交换 Fanout exchange
  */
 public class MQConsumerTwo {
 
     public static void main(String[] args) {
         try {
-            consumerMsg("direct.exchange","direct.queue.one","queue.route.one");
+            consumerMsg("fanout.exchange","fanout.queue.one","");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -31,7 +31,7 @@ public class MQConsumerTwo {
         //创建通道
         Channel channel = connection.createChannel();
         //声明交换机
-        channel.exchangeDeclare(exchange, BuiltinExchangeType.DIRECT,false);
+        channel.exchangeDeclare(exchange, BuiltinExchangeType.FANOUT,false);
         //声明队列
         channel.queueDeclare(queue,false,false,true,null);
         //绑定队列

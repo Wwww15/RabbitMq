@@ -15,7 +15,7 @@ public class MQConsumerOne {
 
     public static void main(String[] args) {
         try {
-            consumerMsg("direct.exchange","direct.queue","queue.route.one");
+            consumerMsg("direct.exchange","direct.queue","queue.route.*");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -25,7 +25,7 @@ public class MQConsumerOne {
         //创建工厂连接
         ConnectionFactory connectionFactory = new ConnectionFactory();
         //设置连接地址
-        connectionFactory.setHost("10.0.10.3");
+        connectionFactory.setHost("192.168.239.128");
         //创建连接
         Connection connection = connectionFactory.newConnection();
         //创建通道
