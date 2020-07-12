@@ -15,11 +15,7 @@ public class MQProducer {
 
     public static void main(String[] args) {
         try {
-<<<<<<< HEAD
-            consumerMsg("fanout.exchange","","接收到这条消息的人，你通过考核了！");
-=======
             consumerMsg("fanout.exchange","queue.route.one","接收到这条消息的的人，你通过考核了！");
->>>>>>> c5ca5f4a36c7b247d4dfd9ae0ca1b342bef86eb4
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -29,11 +25,7 @@ public class MQProducer {
         //创建工厂连接
         ConnectionFactory connectionFactory = new ConnectionFactory();
         //设置连接地址
-<<<<<<< HEAD
         connectionFactory.setHost("192.168.239.128");
-=======
-        connectionFactory.setHost("10.0.10.3");
->>>>>>> c5ca5f4a36c7b247d4dfd9ae0ca1b342bef86eb4
         //创建连接
         Connection connection = connectionFactory.newConnection();
         //创建通道
