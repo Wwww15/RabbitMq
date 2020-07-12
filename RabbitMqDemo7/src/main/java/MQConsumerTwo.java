@@ -14,7 +14,7 @@ public class MQConsumerTwo {
 
     public static void main(String[] args) {
         try {
-            consumerMsg("topic.exchange","topic.route.*#");
+            consumerMsg("topic.exchange","#");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -24,7 +24,7 @@ public class MQConsumerTwo {
         //创建连接工厂
         ConnectionFactory connectionFactory = new ConnectionFactory();
         //设置连接地址
-        connectionFactory.setHost("10.0.10.3");
+        connectionFactory.setHost("192.168.239.128");
         //设置连接端口
         connectionFactory.setPort(5672);
         //设置连接的虚拟机

@@ -7,14 +7,14 @@ import java.io.IOException;
 import java.util.concurrent.TimeoutException;
 
 /**
- * 消费者2
+ * 消费者3
  * @Tag 主题交换Topic exchange
  */
 public class MQConsumerThree {
 
     public static void main(String[] args) {
         try {
-            consumerMsg("topic.exchange","topic.route.#.#");
+            consumerMsg("topic.exchange","topic.#.##");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -24,7 +24,7 @@ public class MQConsumerThree {
         //创建连接工厂
         ConnectionFactory connectionFactory = new ConnectionFactory();
         //设置连接地址
-        connectionFactory.setHost("10.0.10.3");
+        connectionFactory.setHost("192.168.239.128");
         //设置连接端口
         connectionFactory.setPort(5672);
         //设置连接的虚拟机
