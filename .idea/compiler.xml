@@ -15,6 +15,7 @@
         <module name="RabbitMqDemo2" />
         <module name="RabbitMqDemo1" />
         <module name="rabbitmqdemo3" />
+        <module name="RabbitMqDemo9" />
         <module name="RabbitMqDemo8" />
       </profile>
     </annotationProcessing>
